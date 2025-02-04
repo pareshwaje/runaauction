@@ -1,0 +1,69 @@
+<!-- Keep your original code intact -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>RunAnAuction</title>
+</head>
+
+<body>
+  <header>
+    <div class="nav-menu">
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./Run-an-Auction.html">Run-an-Auction</a></li>
+        <li><a href="./your-auctions.html">Your-Auctions</a></li>
+        <li><a href="./Match-Stats.html">Match-Stats</a></li>
+      </ul>
+      <ul>
+        <li><a id="signup" href="#">Signup</a></li>
+        <li><a id="login" href="#">Login</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div>
+    <h1>Teams</h1>
+    <div id="teamTableContainer"></div>
+  </div>
+<script>
+    // Populate Teams Table
+window.onload = function () {
+  const teams = JSON.parse(localStorage.getItem("teams")) || [];
+  const tableContainer = document.getElementById("teamTableContainer");
+
+  if (teams.length > 0) {
+    let tableContent = `
+      <table class="material-table">
+        <thead>
+          <tr>
+            <th>Team Name</th>
+            <th>Team Owner</th>
+            <th>Team Logo</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    teams.forEach(team => {
+      tableContent += `
+        <tr>
+          <td>${team.teamName}</td>
+          <td>${team.teamOwner}</td>
+          <td><img src="${team.teamLogo}" alt="Team Logo" class="team-img"></td>
+        </tr>
+      `;
+    });
+
+    tableContent += `</tbody></table>`;
+    tableContainer.innerHTML = tableContent;
+  } else {
+    tableContainer.innerHTML = "<h2 style='text-align: center;'>No teams found.</h2>";
+  }
+};
+
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!-- Keep your original code intact -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>RunAnAuction</title>
+</head>
+
+<body>
+  <header>
+    <div class="nav-menu">
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./Run-an-Auction.html">Run-an-Auction</a></li>
+        <li><a href="./your-auctions.html">Your-Auctions</a></li>
+        <li><a href="./Match-Stats.html">Match-Stats</a></li>
+      </ul>
+      <ul>
+        <li><a id="signup" href="#">Signup</a></li>
+        <li><a id="login" href="#">Login</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div>
+    <h1>Players</h1>
+    <div id="playerTableContainer"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<script>
+ // Populate Players Table
+window.onload = function () {
+  const players = JSON.parse(localStorage.getItem("players")) || [];
+  const tableContainer = document.getElementById("playerTableContainer");
+
+  if (players.length > 0) {
+    let tableContent = `
+      <table class="material-table">
+        <thead>
+          <tr>
+            <th>Player Name</th>
+            <th>Jersey Name</th>
+            <th>Jersey Number</th>
+            <th>Player Category</th>
+            <th>Player Photo</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    players.forEach(player => {
+      tableContent += `
+        <tr>
+          <td>${player.playerName}</td>
+          <td>${player.jerseyName}</td>
+          <td>${player.jerseyNumber}</td>
+          <td>${player.playerCategory}</td>
+          <td><img src="${player.playerPhoto}" alt="Player Photo" class="player-img"></td>
+        </tr>
+      `;
+    });
+
+    tableContent += `</tbody></table>`;
+    tableContainer.innerHTML = tableContent;
+  } else {
+    tableContainer.innerHTML = "<h2 style='text-align: center;'>No players found.</h2>";
+  }
+};
+
+</script>
+
+</body>
+</html>    

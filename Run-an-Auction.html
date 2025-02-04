@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>RunAnAcution</title>
+</head>
+<body>
+    <header>
+        <div class="nav-menu">
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./Run-an-Auction.html">Run-an-Auction</a></li>
+            <li><a href="./your-auctions.html">Your-Auctions</a></li>
+            <li><a href="./Match-Stats.html">Match-Stats</a></li>
+        </ul>
+        <ul>
+            <li><a id="signup" href="#">Signup</a></li>
+            <li><a id="login" href="#">Login</a></li>
+        </ul>
+    </div>
+    </header>
+    <section>
+      <div class="form-body">  
+        <div class="container">
+            <h1>Create Auction</h1>
+            <form id="auctionForm" action="#" method="post">
+              <div class="form-group">
+                <label for="leagueName">League Name (Auction Name)</label>
+                <input type="text" id="leagueName" name="leagueName" required>
+              </div>
+        
+              <div class="form-group">
+                <label for="walletPerTeam">Wallet Per Team</label>
+                <input type="number" id="walletPerTeam" name="walletPerTeam" required>
+              </div>
+        
+              <div class="form-group">
+                <label for="baseValue">Base Value of Player</label>
+                <input type="number" id="baseValue" name="baseValue" required>
+              </div>
+        
+              <div class="form-group">
+                <label for="bidIncrease">Bid Value Increase By</label>
+                <input type="number" id="bidIncrease" name="bidIncrease" required>
+              </div>
+        
+              <div class="form-group">
+                <label for="playersPerTeam">Players Per Team</label>
+                <input type="number" id="playersPerTeam" name="playersPerTeam" required>
+              </div>
+        
+              <button type="submit" class="create-auction-btn">Create Auction</button>
+            </form>
+          </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+    <script>
+    document.getElementById('auctionForm').addEventListener('submit', function(event) {
+      event.preventDefault();  // Prevent the default form submission
+
+      // Get values from the form fields
+      const leagueName = document.getElementById('leagueName').value;
+      const walletPerTeam = document.getElementById('walletPerTeam').value;
+      const baseValue = document.getElementById('baseValue').value;
+      const bidIncrease = document.getElementById('bidIncrease').value;
+      const playersPerTeam = document.getElementById('playersPerTeam').value;
+
+      // Store values in localStorage
+      localStorage.setItem('leagueName', leagueName);
+      localStorage.setItem('walletPerTeam', walletPerTeam);
+      localStorage.setItem('baseValue', baseValue);
+      localStorage.setItem('bidIncrease', bidIncrease);
+      localStorage.setItem('playersPerTeam', playersPerTeam);
+
+      // Redirect to another page (your-auctions.html)
+      window.location.href = "your-auctions.html";  // Ensure this page exists in your project
+    });
+  </script>
+    </script>
+</body>
+</html>
